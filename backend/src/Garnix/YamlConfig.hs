@@ -125,9 +125,13 @@ data AttributeMatcher = AttributeMatcher
 
 parseAttributeMatcher :: Text -> Either Text AttributeMatcher
 parseAttributeMatcher x = case T.splitOn "." x of
-  [a, b, c] -> pure $ AttributeMatcher (cs a) (cs b) (Just $ cs c)
-  [a, b] -> pure $ AttributeMatcher (cs a) (cs b) Nothing
-  _ -> Left "Expected 'x.y' or 'x.y.z'"
+  [a, b, c]
+    | not (T.null a) && not (T.null b) && not (T.null c) ->
+        pure $ AttributeMatcher (cs a) (cs b) (Just $ cs c)
+  [a, b]
+    | not (T.null a) && not (T.null b) ->
+        pure $ AttributeMatcher (cs a) (cs b) Nothing
+  _ -> Left "Expected 'x.y' or 'x.y.z' with non-empty parts"
 
 renderAttributeMatcher :: AttributeMatcher -> Text
 renderAttributeMatcher a = case _attributeMatcherThirdPart a of

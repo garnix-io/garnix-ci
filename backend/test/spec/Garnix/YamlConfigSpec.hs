@@ -90,6 +90,20 @@ spec = do
         (actual ^. excludeSection)
           `shouldBe` [AttributeMatcher "nixosConfigurations" "*" Nothing]
 
+      it "rejects attribute matchers with empty parts" $ do
+        -- Inputs like "a..b" / "a.b." / ".b" all decode to attribute
+        -- matchers with an empty first/second/third part. Without the
+        -- non-empty check, the matchers silently match nothing because
+        -- real flake attribute parts are never empty. They must error.
+        parseAttributeMatcher "a..b" `shouldSatisfy` isLeft
+        parseAttributeMatcher "a.b." `shouldSatisfy` isLeft
+        parseAttributeMatcher ".b" `shouldSatisfy` isLeft
+        -- The happy path still works.
+        parseAttributeMatcher "packages.x86_64-linux.hello"
+          `shouldBe` Right (AttributeMatcher "packages" "x86_64-linux" (Just "hello"))
+        parseAttributeMatcher "packages.x86_64-linux"
+          `shouldBe` Right (AttributeMatcher "packages" "x86_64-linux" Nothing)
+
       it "parses a missing exclude section to an empty list" $ do
         let config =
               cs
