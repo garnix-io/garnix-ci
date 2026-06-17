@@ -627,7 +627,6 @@ spec = do
             void $ getBuild' Nothing (build ^. id)
 
       it "returns an error if a user has exhausted their quota" $ do
-        -- FIXME: This currently does not get reported to the user
         let flake = "{ outputs = {self}: { packages = {}; }; }"
         GH.withFakeGithubInterface $ \ghState -> do
           GH.withLocalRepo ghState "owner" "repo" identity defaultCommitInfo (GH.simpleSetup flake) $ \commitInfo -> do
