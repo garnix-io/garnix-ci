@@ -1,7 +1,0 @@
-description: Handles bad YAML configs
-results:
-  - name: "Evaluate flake.nix"
-    outputLocation: Github
-    result: failure
-    index: Last
-    outputRegex: "YAML parse exception (.|\n)*did not find expected key"

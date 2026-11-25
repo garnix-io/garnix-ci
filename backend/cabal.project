@@ -1,2 +1,0 @@
-packages: garnix.cabal
-allow-newer: all:ghc-prim, all:base

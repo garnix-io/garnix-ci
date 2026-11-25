@@ -1,7 +1,0 @@
-description: Handles bad nix flakes
-results:
-  - name: "Evaluate flake.nix"
-    outputLocation: Github
-    result: failure
-    index: Last
-    outputRegex: "error: syntax error, unexpected end of file, expecting '.' or '='"
