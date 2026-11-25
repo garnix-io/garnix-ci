@@ -1,9 +1,0 @@
-description: Fail to access private dependency from github for an external PR
-repo: "garnix-testing-org/minimal-collaborators-test"
-prFromRepo: "nixos/nixpkgs"
-results:
-  - name: "Evaluate flake.nix"
-    index: Last
-    outputRegex: "Repository has private dependencies, but PR is from fork"
-    outputLocation: Github
-    result: failure

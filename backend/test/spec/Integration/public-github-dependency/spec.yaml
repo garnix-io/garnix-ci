@@ -1,7 +1,0 @@
-description: Fetching public dependencies from github
-repo: "garnix-io/garnix-lib"
-results:
-  - name: "package default [x86_64-linux]"
-    index: Last
-    outputLocation: Github
-    result: success

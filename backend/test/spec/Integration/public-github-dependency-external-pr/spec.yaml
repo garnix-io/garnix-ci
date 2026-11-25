@@ -1,9 +1,0 @@
-description: Fetching public dependencies from github for an external PR
-repo: "garnix-io/garnix-lib"
-prFromRepo: "nixos/nixpkgs"
-results:
-  - name: "package default [x86_64-linux]"
-    index: Last
-    outputRegex: "accessed: Hello, World!"
-    outputLocation: Github
-    result: success

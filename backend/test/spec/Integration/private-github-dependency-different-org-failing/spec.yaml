@@ -1,9 +1,0 @@
-description: >-
-  Fetching private dependencies from different org fails
-repo: "garnix-testing-org/maximal-collaborators-test"
-results:
-  - name: "Evaluate flake.nix"
-    index: Last
-    outputLocation: Github
-    outputRegex: "github:jkarni/test-repo-private is private or doesn't exist \\(or your flake.lock file is outdated\\).\nIf it is private and you would like to use it, see https://garnix.io/docs/private_inputs."
-    result: failure

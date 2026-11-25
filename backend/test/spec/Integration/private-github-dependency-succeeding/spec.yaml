@@ -1,8 +1,0 @@
-description: allows access to private repos
-repo: "garnix-testing-org/minimal-collaborators-test"
-results:
-  - name: "package default [x86_64-linux]"
-    index: Last
-    outputRegex: "accessed: secret"
-    outputLocation: Github
-    result: success
